@@ -42,18 +42,22 @@ const deleteFuelCenter = async (req, res) => {
     });
 };
 
+// const getCountofCenters = async (req, res) => {   
+//     const count =  FuelCenter.countDocuments();        
+//     await count.then(data => res.status(200).send({"count": data }))
+//         .catch((err) => {
+//             res.status(200).send(err)
+//         }); 
+// }
 
 const getCountofCenters = async (req, res) => {
-    
-    const count =  FuelCenter.countDocuments();
-        
-    await count.then(data => res.status(200).send({"count": data }))
-        .catch((err) => {
-            res.status(200).send(err)
-        });
-        
-    
-}
+    try {
+      const result = await FuelCenter.countDocuments();
+      return res.status(200).json(result);
+    } catch {
+      return res.status(400).json({ success: false });
+    }
+  }
 
 module.exports = {
     addFuelCenter,
