@@ -4,22 +4,10 @@ const Schema = mongoose.Schema;
 
 const fuelCenterSchema = new Schema({
 
-    fuelCenterId : {
-        type : String,
-        required: true
-    },
-    fuelCenterName : {
-        type : String,
-        required: true
-    },
-    fuelCenterAddress : {
-        type : String,
-        required: true
-    },
-    district : {
-        type : String,
-        requir: true
-    },
+    fuelCenterId : { type : String, required: true },
+    fuelCenterName : { type : String, required: true },
+    fuelCenterAddress : { type : String, required: true },
+    district : { type : String, required: true },
     
 })
 
