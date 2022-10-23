@@ -22,7 +22,7 @@ const getCenterAvailableDetails = async (req, res) => {
           res.status(500).send(err);
         });
     }
-};
+}; 
 
 const updateAvailability = async (req, res) => {
     console.log(req.body);
