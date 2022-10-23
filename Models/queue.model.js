@@ -15,4 +15,4 @@ const queueSchema = new Schema({
 
 const Queue = mongoose.model("Queue", queueSchema);
 
-module.exports = Queue;
+module.exports = Queue; 
