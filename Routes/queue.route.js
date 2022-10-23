@@ -8,9 +8,9 @@ module.exports = function () {
     router.get("/", QueueController.getAllQueues);
     router.put("/update/:id", QueueController.updateQueue);
     router.delete("/delete/:id", QueueController.deleteQueue);
-    router.get("/count", QueueController.getCountofQueue);
-    router.get("/count/petrol", QueueController.getCountofPetrolQueue);
-    router.get("/count/diesel", QueueController.getCountofDieselQueue);
+    router.get("/count/:flueCenterName", QueueController.getCountofQueue);
+    router.get("/count/petrol/:flueCenterName", QueueController.getCountofPetrolQueue);
+    router.get("/count/diesel/:flueCenterName", QueueController.getCountofDieselQueue);
 
   return router;
 };
