@@ -21,15 +21,15 @@ const queueSchema = new Schema({
         required: true
     },
     inTime : {
-        type : String,
+        type : Date,
         requir: true
     },
     outTime: {
-        type : String,
+        type : Date,
         require: true
     },
     waitingTime: {
-        type : String,
+        type : Date,
         require: true
     }   
 })
