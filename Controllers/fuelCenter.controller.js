@@ -17,7 +17,7 @@ const getAllFuelCenters = async (req, res) => {
 
 const getFuelCenterDetails = async (req, res) => {
     if (req.body) {
-      await FuelCenter.findOne({ fuelCenterName: req.params.fuelCenterName }).then((data) => {res.status(200).send({ data });})
+      await FuelCenter.findOne({ fuelCenterId: req.params.fuelCenterId }).then((data) => {res.status(200).send({ data });})
         .catch((err) => {
           res.status(500).send(err);
         });
@@ -59,6 +59,22 @@ const getCountofCenters = async (req, res) => {
     }
   }
 
+const searchCenters = async (req, res) => {
+  try {
+    const search = await FuelCenter.find(
+      {
+        "$or":[
+          { fuelCenterName: { $regex:req.params.id } },
+          { district : { $regex:req.params.id } }
+        ]
+      }
+    );
+    return res.status(200).json(search);
+  } catch {
+    res.status(400).json({success: false });
+  }
+}
+
 module.exports = {
     addFuelCenter,
     getAllFuelCenters,
@@ -66,4 +82,5 @@ module.exports = {
     updateFuelCenter,
     deleteFuelCenter, 
     getCountofCenters,
+    searchCenters,
 };
