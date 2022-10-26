@@ -2,6 +2,7 @@ const  mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// fuel center schema
 const fuelCenterSchema = new Schema({
 
     fuelCenterId : { type : String, required: true },

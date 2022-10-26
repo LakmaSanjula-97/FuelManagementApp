@@ -22,10 +22,15 @@ mongoose.connect(URL, {
     console.log('_MongoDB Connection Success_')
   })
 
-  const FuelCenter = require("./Routes/fuelCenter.route");
-  const Queue = require("./Routes/queue.route");
+  // fuel center router
+  const FuelCenter = require("./Routes/fuelCenter.route"); 
+  // fuel queue router
+  const Queue = require("./Routes/queue.route"); 
+  // fuel availability router
   const FuelAvailability = require("./Routes/fuelAvailability.route");
+  // review router
   const Review = require("./Routes/review.route");
+  // owner router
   const Owner = require("./Routes/vehicalOwner.route");
 
   app.use("/fuelCenter", FuelCenter());
