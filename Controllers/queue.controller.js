@@ -1,5 +1,7 @@
+//import queue model
 const Queue = require("../Models/queue.model");
 
+// add queue details 
 const addQueue = async (req, res) => {
     if (req.body) {
         const queue = new Queue(req.body);
@@ -29,6 +31,7 @@ const addQueue = async (req, res) => {
 //   }
 // };
 
+//get all queue details
 const getAllQueues = async (req, res) => {
     await Queue.find().then((data) => {res.status(200).send(data);})
         .catch((error) => {
@@ -36,6 +39,7 @@ const getAllQueues = async (req, res) => {
     });
 };
 
+//get queue details according to the center name
 const getQueueDetails = async (req, res) => {
     if (req.body) {
       await Queue.findOne({ flueCenterName: req.params.flueCenterName }).then((data) => {res.status(200).send({ data });})
@@ -45,6 +49,7 @@ const getQueueDetails = async (req, res) => {
     }
 };
 
+// update queue details
 const updateQueue = async (req, res) => {
     console.log(req.body);
     if (req.body) {
@@ -56,6 +61,7 @@ const updateQueue = async (req, res) => {
     }
 };
 
+//update out time of the queue
 const updateOutTimeofQueue = async (req, res) => {
   console.log(req.params.id);
   let queue = await Queue.findById(req.params.id);
@@ -67,6 +73,7 @@ const updateOutTimeofQueue = async (req, res) => {
   res.status(200).send('not Updated');
 };
 
+//delete queue details
 const deleteQueue = async (req, res) => {
     await Queue.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Deleted" });})
       .catch((err) => {
@@ -83,6 +90,7 @@ const deleteQueue = async (req, res) => {
 //     }
 //   }
 
+//get count of the vehicles in the queue according the center name
 const getCountofQueue = async (req, res) => {
     try {
       const result = await Queue.count({ flueCenterName: req.params.flueCenterName });
@@ -92,6 +100,7 @@ const getCountofQueue = async (req, res) => {
     }
   }
 
+  //get count of the vehicles in the petrol queue according the center name
 const getCountofPetrolQueue = async (req, res) => {
     try {
       const result = await Queue.count({ flueCenterName: req.params.flueCenterName })
@@ -103,6 +112,7 @@ const getCountofPetrolQueue = async (req, res) => {
     }
 }
 
+//get count of the vehicles in the diesel queue according the center name
 const getCountofDieselQueue = async (req, res) => {
     try {
       const result = await Queue.count({ flueCenterName: req.params.flueCenterName })

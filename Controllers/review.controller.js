@@ -1,3 +1,4 @@
+//import review model
 const Review = require("../Models/review.model");
 
 const addReview = async (req, res) => {
@@ -8,6 +9,7 @@ const addReview = async (req, res) => {
     }
 };
 
+// get all review comments 
 const getAllReviews = async (req, res) => {
     await Review.find().then((data) => {res.status(200).send(data);})
         .catch((error) => {
@@ -15,6 +17,7 @@ const getAllReviews = async (req, res) => {
     });
 };
 
+//get all review details according to the fuel center name
 const getReviewDetails = async (req, res) => {
     if (req.body) {
       await Review.findOne({ fuelCenterName: req.params.fuelCenterName }).then((data) => {res.status(200).send({ data });})
@@ -24,6 +27,8 @@ const getReviewDetails = async (req, res) => {
     }
 };
 
+
+//update review details
 const updateReview = async (req, res) => {
     console.log(req.body);
     if (req.body) {
@@ -35,6 +40,7 @@ const updateReview = async (req, res) => {
     }
 };
 
+//delete all the review details 
 const deleteReview = async (req, res) => {
     await Review.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Deleted" });})
       .catch((err) => {

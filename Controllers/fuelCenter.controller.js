@@ -1,5 +1,7 @@
+// import fuel center model
 const FuelCenter = require("../Models/fuelCenter.model");
 
+// add fuel center details
 const addFuelCenter = async (req, res) => {
     if (req.body) {
         const fuelCenter = new FuelCenter(req.body);
@@ -8,6 +10,7 @@ const addFuelCenter = async (req, res) => {
     }
 };
 
+// get all fuel center details
 const getAllFuelCenters = async (req, res) => {
     await FuelCenter.find().then((data) => {res.status(200).send(data);})
         .catch((error) => {
@@ -15,6 +18,7 @@ const getAllFuelCenters = async (req, res) => {
     });
 };
 
+//get fuel center details using center id
 const getFuelCenterDetails = async (req, res) => {
     if (req.body) {
       await FuelCenter.findOne({ fuelCenterId: req.params.fuelCenterId }).then((data) => {res.status(200).send({ data });})
@@ -24,6 +28,7 @@ const getFuelCenterDetails = async (req, res) => {
     }
 };
 
+//update fuel center details
 const updateFuelCenter = async (req, res) => {
     console.log(req.body);
     if (req.body) {
@@ -35,6 +40,7 @@ const updateFuelCenter = async (req, res) => {
     }
 };
 
+// delete fuel center 
 const deleteFuelCenter = async (req, res) => {
     await FuelCenter.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Fuel Center Deleted" });})
       .catch((err) => {
@@ -50,6 +56,7 @@ const deleteFuelCenter = async (req, res) => {
 //         }); 
 // }
 
+//get all the count of the centers
 const getCountofCenters = async (req, res) => {
     try {
       const result = await FuelCenter.countDocuments();
@@ -59,6 +66,7 @@ const getCountofCenters = async (req, res) => {
     }
   }
 
+  //search centers by center name
 const searchCenters = async (req, res) => {
   try {
     const search = await FuelCenter.find(

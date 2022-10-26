@@ -1,5 +1,7 @@
+//import vehicle owner model
 const Owner = require("../Models/vehicalOwner.model");
 
+// add vehicle owner details
 const addOwner = async (req, res) => {
     if (req.body) {
         const owner = new Owner(req.body);
@@ -8,6 +10,7 @@ const addOwner = async (req, res) => {
     }
 };
 
+// get all vehicle owner detals
 const getAllOwners = async (req, res) => {
     await Owner.find().then((data) => {res.status(200).send(data);})
         .catch((error) => {
@@ -15,6 +18,7 @@ const getAllOwners = async (req, res) => {
     });
 };
 
+// get owner details according to the owner name
 const getOwnerDetails = async (req, res) => {
     if (req.body) {
       await Owner.findOne({ ownerName: req.params.ownerName }).then((data) => {res.status(200).send({ data });})
@@ -24,6 +28,7 @@ const getOwnerDetails = async (req, res) => {
     }
 };
 
+//update owner details
 const updateOwner = async (req, res) => {
     console.log(req.body);
     if (req.body) {
@@ -35,6 +40,7 @@ const updateOwner = async (req, res) => {
     }
 };
 
+//delete owner
 const deleteOwner = async (req, res) => {
     await Owner.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Fuel Center Deleted" });})
       .catch((err) => {
