@@ -2,6 +2,7 @@ const  mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// fuel availability schema
 const fuelAvailabilitySchema = new Schema({
 
     userNames : { type : String, required: true },

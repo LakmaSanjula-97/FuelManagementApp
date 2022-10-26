@@ -2,6 +2,7 @@ const  mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// fuel queue schema
 const queueSchema = new Schema({
 
     flueCenterName : { type : String, required: true }, 

@@ -2,6 +2,7 @@ const  mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// vehicle owner schema
 const ownerSchema = new Schema({
 
     ownerName : { type : String, required: true },

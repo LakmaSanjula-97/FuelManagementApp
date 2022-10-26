@@ -1,3 +1,4 @@
+// fuel queue route
 const express = require("express");
 const router = express.Router();
 const QueueController = require("../Controllers/queue.controller");

@@ -1,3 +1,4 @@
+// fuel availability route
 const express = require("express");
 const router = express.Router();
 const FuelAvailabilityController = require("../Controllers/fuelAvailability.controller");
