@@ -11,6 +11,7 @@ module.exports = function () {
     router.get("/count/:flueCenterName", QueueController.getCountofQueue);
     router.get("/count/petrol/:flueCenterName", QueueController.getCountofPetrolQueue);
     router.get("/count/diesel/:flueCenterName", QueueController.getCountofDieselQueue);
+    router.patch("/outtime/:id", QueueController.updateOutTimeofQueue);
 
   return router;
 };

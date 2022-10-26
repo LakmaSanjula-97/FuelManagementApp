@@ -8,6 +8,7 @@ module.exports = function () {
     router.get("/", FuelAvailabilityController.getAllAvailabilityDetails);
     router.put("/update/:id", FuelAvailabilityController.updateAvailability);
     router.delete("/delete/:id", FuelAvailabilityController.deleteAvailabilityDetails);
+    router.get("/search/:id", FuelAvailabilityController.searchAvailableCenters);
    
   return router;
 };

@@ -42,10 +42,26 @@ const deleteAvailabilityDetails = async (req, res) => {
     });
 };
 
+const searchAvailableCenters = async (req, res) => {
+  try {
+    const search = await FuelAvailability.find(
+      {
+        "$or":[
+          { fuelCenterName: { $regex:req.params.id } }
+        ]
+      }
+    );
+    return res.status(200).json(search);
+  } catch {
+    res.status(400).json({success: false });
+  }
+}
+
 module.exports = {
     addAvailaabilityDetails,
     getAllAvailabilityDetails,
     getCenterAvailableDetails,
     updateAvailability,
-    deleteAvailabilityDetails
+    deleteAvailabilityDetails,
+    searchAvailableCenters
 };

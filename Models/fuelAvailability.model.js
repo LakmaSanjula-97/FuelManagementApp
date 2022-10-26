@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const fuelAvailabilitySchema = new Schema({
 
+    userNames : { type : String, required: true },
     flueCenterId : { type : String, required: true },
     flueCenterName : { type : String, required: true },
     PetrolAvailable : { type : String, required: true },

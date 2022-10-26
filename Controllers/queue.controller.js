@@ -56,6 +56,17 @@ const updateQueue = async (req, res) => {
     }
 };
 
+const updateOutTimeofQueue = async (req, res) => {
+  console.log(req.params.id);
+  let queue = await Queue.findById(req.params.id);
+
+  queue = await Queue.updateOne({_id:req.params.id},{$set: {outTime: req.body.outTime}});
+
+  if(!queue) 
+    return res.status(404).send('Out time recorded');
+  res.status(200).send('not Updated');
+};
+
 const deleteQueue = async (req, res) => {
     await Queue.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Deleted" });})
       .catch((err) => {
@@ -103,6 +114,24 @@ const getCountofDieselQueue = async (req, res) => {
     }
   }
 
+// const waitingOurs = async (req, res) => {
+//   var query = {
+//     username: req.body.username,
+//     Date: {
+//         $gte: new Date(req.body.Fromdate).toISOString(),
+//         $lte: new Date(req.body.Todate).toISOString()
+//     },
+//     leave: { $exists: false }
+// }
+
+// User.find(query, function (err, data) {
+//     if (err) { return res.status(300).json("Error") }
+//     else {
+//         return res.status(200).json({ data: data })
+//     }
+// })
+// }
+
 module.exports = {
     addQueue,
     getAllQueues,
@@ -111,5 +140,6 @@ module.exports = {
     deleteQueue,
     getCountofQueue,
     getCountofPetrolQueue,
-    getCountofDieselQueue
+    getCountofDieselQueue,
+    updateOutTimeofQueue
 };
