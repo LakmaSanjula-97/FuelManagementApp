@@ -40,7 +40,7 @@ const updateOwner = async (req, res) => {
     }
 };
 
-//delete owner
+//delete owner details
 const deleteOwner = async (req, res) => {
     await Owner.findByIdAndDelete(req.params.id).then(() => {res.status(200).send({ status: "Fuel Center Deleted" });})
       .catch((err) => {
