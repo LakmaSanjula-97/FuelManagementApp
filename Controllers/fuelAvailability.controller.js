@@ -51,13 +51,12 @@ const deleteAvailabilityDetails = async (req, res) => {
 //search available center details
 const searchAvailableCenters = async (req, res) => {
   try {
-    const search = await FuelAvailability.find(
-      {
-        "$or":[
-          { fuelCenterName: { $regex:req.params.id } }
-        ]
-      }
-    );
+    const search = await FuelAvailability.find({
+      $or: [
+        { flueCenterName: { $regex: req.params.id } },
+        { userNames: { $regex: req.params.id } },
+      ],
+    });
     return res.status(200).json(search);
   } catch {
     res.status(400).json({success: false });
